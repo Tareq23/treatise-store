@@ -3,4 +3,14 @@
 spring:
   application:
     name: treatise-store
+  datasource:
+    url: jdbc:mysql://localhost:3306/treatise_store
+    username: root
+    password: 12x34y56z
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
