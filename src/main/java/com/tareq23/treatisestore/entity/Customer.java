@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Entity(name = "customer")
+@Entity(name = "customers")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -46,6 +46,6 @@ public class Customer {
     private String mobileNumber;
 
 
-//    @Column(columnDefinition = "default = ")
-//    private Boolean isVerified;
+    @Column(columnDefinition = "boolean default false")
+    private Boolean isVerified;
 }
