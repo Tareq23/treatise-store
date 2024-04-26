@@ -1,0 +1,39 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragment :: head">
+    <title>Register</title>
+
+    <link th:href="@{/css/style.css}" />
+</head>
+
+
+<body>
+
+
+
+<div th:class="container">
+    <div th:replace="header :: top-header"></div>
+
+    <div class="register-form">
+        <h2>Customer Registration</h2>
+        <form th:action="@{/auth/login}" method="post">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input th:field="${credential.username}" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" th:field="${credential.password}" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>
+
+
+
+<footer th:replace="fragment :: footer"></footer>
+</body>
+</html>

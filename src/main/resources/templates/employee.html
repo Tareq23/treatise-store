@@ -1,0 +1,46 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragment :: head">
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+    <script th:src="@{/js/script.js}"></script>
+</head>
+
+
+<body>
+
+
+
+<div th:class="container">
+    <div th:replace="header :: top-header"></div>
+
+    <h1 th:text="${message}">Hello World</h1>
+    <button th:onclick="demo()">alert me</button>
+
+    <br/>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Designation</th>
+            <th scope="col">Phone Number</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="employee: ${employees}">
+                <td th:text="${employee.name}"></td>
+                <td th:text="${employee.designation}"></td>
+                <td th:text="${employee.phoneNumber}"></td>
+                <td th:if="${employee.designation.equalsIgnoreCase('Senior Developer')}"><button class="alert-danger">NUKE</button> </td>
+                <td th:unless="${employee.designation.equalsIgnoreCase('Senior Developer')}"><button class="alert-danger">DUKE</button> </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
+</body>
+</html>

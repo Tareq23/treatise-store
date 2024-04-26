@@ -8,11 +8,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerDTO {
+public class RegistrationDTO {
+
+
     @NotNull
     @Size(min = 3, max = 50, message = "User name should be greater than 3 and less than 50")
     private String name;
@@ -26,5 +30,9 @@ public class CustomerDTO {
 
     @NotNull
     private String gender;
+
+    @NotNull
+    @Size(min = 6, max = 16)
+    private String password;
 
 }
