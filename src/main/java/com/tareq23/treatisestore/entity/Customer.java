@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.UniqueElements;
 
 
 @Entity(name = "customers")
@@ -30,11 +31,11 @@ public class Customer {
     @NotNull
     @Email
     @Size(max = 100)
+
     private String email;
 
 
     @NotNull
-    @Size(max = 30, min=6)
     private String password;
 
     @NotNull

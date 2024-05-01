@@ -1,5 +1,6 @@
 package com.tareq23.treatisestore.dto;
 
+import com.tareq23.treatisestore.validation.UniqueEmail;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -22,13 +23,14 @@ public class RegistrationDTO {
     private String name;
 
     @Email
+    @UniqueEmail
     private String email;
 
-    @NotNull
+    @NotNull(message = "Contact Number required!")
     @Size(min = 11, max = 14)
     private String mobileNumber;
 
-    @NotNull
+    @NotNull(message = "Gender required")
     private String gender;
 
     @NotNull

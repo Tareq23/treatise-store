@@ -15,12 +15,14 @@
 
     <div th:class="register-form">
         <h2>Customer Registration</h2>
+        <p th:if="${error != null && !error.success}" th:text="${error.message}"></p>
         <form th:class="register-form" th:action="@{/auth/register}" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input th:field="${customer.name}" type="text" class="form-control" id="name"  placeholder="Enter name">
             </div>
             <div class="form-group">
+                <p th:if="${error != null && error.fields.containsKey('email')}" th:text="${error.fields.get('email')}"></p>
                 <label for="exampleInputEmail1">Email address</label>
                 <input th:field="${customer.email}" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
@@ -35,11 +37,11 @@
             <div class="form-group">
                 <label>Gender</label>
                 <div class="form-check gender">
-                    <input class="form-check-input" th:field="${customer.gender}" type="radio" name="customerGender" id="maleGender">
+                    <input class="form-check-input" th:field="*{customer.gender}" value="male" type="radio" name="customerGender" id="maleGender">
                     <label class="form-check-label" for="maleGender">Male</label>
                 </div>
                 <div class="form-check gender">
-                    <input class="form-check-input" th:field="${customer.gender}" type="radio" name="customerGender" id="femaleGender">
+                    <input class="form-check-input" th:field="*{customer.gender}" value="female" type="radio" name="customerGender" id="femaleGender">
                     <label class="form-check-label" for="femaleGender">Female</label>
                 </div>
             </div>
