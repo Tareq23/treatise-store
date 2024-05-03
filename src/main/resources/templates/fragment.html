@@ -1,8 +1,16 @@
 
 
-<head th:fragment="head">
-    <title>Page Title</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<head th:fragment="head(pageTitle)">
+    <title th:text="${pageTitle}">Page Title</title>
+
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+
+    <script th:src="@{js/jquery.min.js}"></script>
+
+    <script th:src="@{js/bootstrap.min.js}"></script>
 </head>
 
 

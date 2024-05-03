@@ -2,6 +2,7 @@ package com.tareq23.treatisestore.dto;
 
 import com.tareq23.treatisestore.validation.UniqueEmail;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ import java.util.Date;
 public class RegistrationDTO {
 
 
-    @NotNull
+    @NotBlank(message = "Name required")
     @Size(min = 3, max = 50, message = "User name should be greater than 3 and less than 50")
     private String name;
 

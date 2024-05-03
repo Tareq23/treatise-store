@@ -1,0 +1,123 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragment :: head(pageTitle='Author')"></head>
+
+<body>
+
+
+
+<div th:class="container">
+    <div th:replace="header :: top-header"></div>
+
+    <div class="author-header">
+        <h2>Author</h2>
+        <button class="btn bg-primary" id="add-new-author-modal-btn" type="button" data-toggle="modal" data-target="#add-new-author-modal">Add New</button>
+    </div>
+    <br/>
+    <table class="table table-bordered ">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>হুমায়ূন আহমেদ</td>
+                <td><img src="" alt="Author Image"/></td>
+                <td>
+                    <button class="btn">Details</button>
+                    <button class="btn">Edit</button>
+                    <button class="btn">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>তামিম শাহরিয়ার সুবিন</td>
+                <td><img src="" alt="Author Image"/></td>
+                <td>
+                    <button class="btn">Details</button>
+                    <button class="btn">Edit</button>
+                    <button class="btn">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>ইমদাদুল হক মিলন</td>
+                <td><img src="" alt="Author Image"/></td>
+                <td>
+                    <button class="btn">Details</button>
+                    <button class="btn">Edit</button>
+                    <button class="btn">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<div class="modal fade" id="add-new-author-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Author</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="author-name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="author-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="author-biography" class="col-form-label">Biography:</label>
+                        <textarea class="form-control" id="author-biography"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="save-author" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="footer"></div>
+
+<footer th:replace="fragment :: footer"></footer>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#save-author").click(function (){
+            alert("Add New Author")
+
+            let name = $("#author-name").val().trim();
+            let biography = $("#author-biography").val().trim();
+
+            let formData = {
+                "name" : name,
+                "biography": biography
+            }
+
+            $.ajax({
+                type: "post",
+                contentType: "application/json",
+                url: window.location + "/api/author/add",
+                data: JSON.stringify(formData),
+                dataType: 'json',
+                success: function (result) {
+                    console.log('result: ',result)
+                },
+                error: function (error){
+                    console.log('error: ', error);
+                }
+            })
+
+            console.log(name, biography)
+        })
+    })
+</script>
+</body>
+</html>

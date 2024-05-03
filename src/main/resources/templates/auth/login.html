@@ -1,10 +1,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:include="fragment :: head">
-    <title>Register</title>
-
-    <link th:href="@{/css/style.css}" />
-</head>
+<head th:replace="fragment :: head(pageTitle='Customer Login')"></head>
 
 
 <body>
@@ -15,7 +11,7 @@
     <div th:replace="header :: top-header"></div>
 
     <div class="register-form">
-        <h2>Customer Registration</h2>
+        <h2 th:class="title">Customer Registration</h2>
         <p th:if="${result != null && !result.success}" th:text="${result.message}"></p>
         <form th:action="@{/auth/login}" method="post">
             <div class="form-group">

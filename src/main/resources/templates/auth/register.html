@@ -1,9 +1,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:include="fragment :: head">
-    <title>Register</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
-</head>
+<head th:replace="fragment :: head(pageTitle='Customer Registration')"></head>
 
 
 <body>
@@ -13,29 +10,33 @@
 <div th:class="container">
     <div th:replace="header :: top-header"></div>
 
-    <div th:class="register-form">
+    <div th:class="register-card">
         <h2>Customer Registration</h2>
         <p th:if="${error != null && !error.success}" th:text="${error.message}"></p>
         <form th:class="register-form" th:action="@{/auth/register}" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
+                <p th:class="error" th:if="${error != null && error.fields.containsKey('name')}" th:text="${error.fields.get('name')}"></p>
                 <input th:field="${customer.name}" type="text" class="form-control" id="name"  placeholder="Enter name">
             </div>
             <div class="form-group">
-                <p th:if="${error != null && error.fields.containsKey('email')}" th:text="${error.fields.get('email')}"></p>
                 <label for="exampleInputEmail1">Email address</label>
+                <p th:class="error" th:if="${error != null && error.fields.containsKey('email')}" th:text="${error.fields.get('email')}"></p>
                 <input th:field="${customer.email}" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
+                <p th:class="error" th:if="${error != null && error.fields.containsKey('password')}" th:text="${error.fields.get('password')}"></p>
                 <input th:field="${customer.password}" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
             <div class="form-group">
                 <label for="mobileNumber">Contact Number</label>
+                <p th:class="error" th:if="${error != null && error.fields.containsKey('mobileNumber')}" th:text="${error.fields.get('mobileNumber')}"></p>
                 <input th:field="${customer.mobileNumber}" type="text" class="form-control" id="mobileNumber" placeholder="Contact Number">
             </div>
             <div class="form-group">
                 <label>Gender</label>
+                <p th:class="error" th:if="${error != null && error.fields.containsKey('gender')}" th:text="${error.fields.get('gender')}"></p>
                 <div class="form-check gender">
                     <input class="form-check-input" th:field="*{customer.gender}" value="male" type="radio" name="customerGender" id="maleGender">
                     <label class="form-check-label" for="maleGender">Male</label>

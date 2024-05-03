@@ -1,9 +1,30 @@
 
 .gender{
-    margin-left: 30px;
-    background-color: red;
+    margin-left: 8px;
 }
 
 .register-form{
-    background-color: green;
+    background-color: rgba(39, 128, 117, 0.12);
+    padding: 10px 15px;
+    border-radius: 7px;
+}
+
+.error{
+    color: rgba(255, 70, 70, 0.81);
+}
+
+.title{
+    color: #560e0e;
+}
+
+/*=============================================   Author  ==================================================*/
+
+.author-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.author-header button{
+    color: #ececec;
+    font-weight: bold;
 }

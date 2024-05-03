@@ -1,9 +1,6 @@
 package com.tareq23.treatisestore.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -29,6 +26,8 @@ public class Author {
     @Size(min = 3, max = 50, message = "Author name should be less then 50 characters and greater than 3")
     private String name;
 
+    @Column(columnDefinition = "text")
+    private String image;
 
     @NotNull
     @Size(min = 10)
