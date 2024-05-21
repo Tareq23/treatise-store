@@ -3,13 +3,12 @@ package com.tareq23.treatisestore.controller;
 import com.tareq23.treatisestore.dto.FormErrorDto;
 import com.tareq23.treatisestore.dto.LoginDTO;
 import com.tareq23.treatisestore.dto.RegistrationDTO;
-import com.tareq23.treatisestore.service.AuthorService;
+import com.tareq23.treatisestore.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -20,7 +19,7 @@ import java.util.Map;
 public class AuthController {
 
     @Autowired
-    AuthorService authService;
+    AuthService authService;
 
     @GetMapping("/register")
     public String getRegister(Model model)
